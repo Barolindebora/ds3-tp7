@@ -145,16 +145,66 @@ Crear archivo en la aplicacion que se llame urls.py para generar las urls de mi 
 
 En urls.py del proyecto hay que linkear las urls de la app una sola vez 
 
-ejemplo: from django.contrib import admin
+ejemplo:
+
+"""esto es en el proyecto- urls.py
+
+from django.contrib import admin
 
 from django.urls import path
 
 from django.urls.conf import include
 
 from apps.estudiante.urls import *
-
+app_name = 'estudiante' //poner el nombre de la appa
 urlpatterns = [
-   
- path('admin/', admin.site.urls),
-    
-path('', include('apps.estudiante.urls')),]
+
+    path('admin/', admin.site.urls),
+
+    path('', include('apps.estudiante.urls', namespace='estudiante')),]
+
+
+# EJEMPLO DE  UNA VISTA QUE DEVUELVE TODOS LOS REGISTROS DE UN MODELO:
+en views.py
+from django.shortcuts import render
+
+from django.urls import path
+
+from .models import Estudiante
+
+from .views import vista_inicial 
+
+
+
+def lista_estudiantes(request):
+
+    estudiantes = Estudiante.objects.all()
+    return render(request,'estudiantes/lista_estudiantes.html',{'estudiantes':estudiantes})
+
+# Funcion para obtener por id un elemento or pk (primary key)
+
+def obtener_estudiante_por_id(request, pk): 
+    estudiante = get_object_or_404(Estudiante, pk=pk)
+    return render(request, 'estudiante/estudiante.html', {'estudiante': estudiante})
+
+# TEMPLATES
+
+## CONFIGURACIONES NECESARIAS: 
+
+Dentro de la app crear una carpeta llamada templates y dentro de esa carpeta crear otra carpeta que se llame igual que la app 
+
+para que django reconozca de que app proviene el template}
+
+configurar el template en settings.py del proyecto
+
+ 'DIRS': [os.path.join(BASE_DIR), 'templates'],
+
+
+tiene que quedar asi:
+STATIC_URL = 'static/'
+
+STATIC_FILES_DIRS=(os.path.join(BASE_DIR, 'static'),)
+ 
+importar os = import os
+ 
+en el directorio raiz crear una carpeta static

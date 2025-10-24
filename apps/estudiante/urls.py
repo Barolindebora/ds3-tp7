@@ -1,9 +1,10 @@
 from django.urls import path
-from apps.estudiante.views import vista_inicial, vista_estudiantes
+from .views import lista_estudiantes
+from .. import estudiante
 
-
-
+app_name = 'estudiante'
 urlpatterns =[
-    path('', vista_inicial, name='home'),
-
+    path('',lista_estudiantes , name='Lista_estudiantes'),
+    path('<int:pk>',lista_estudiantes, name='Lista_estudiantes_pk'),
 ]
+
