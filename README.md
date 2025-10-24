@@ -158,10 +158,10 @@ from django.urls.conf import include
 from apps.estudiante.urls import *
 app_name = 'estudiante' //poner el nombre de la appa
 urlpatterns = [
-
     path('admin/', admin.site.urls),
-
-    path('', include('apps.estudiante.urls', namespace='estudiante')),]
+    path('', include('apps.estudiante.urls', namespace='estudiante')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ 
 
 
 # EJEMPLO DE  UNA VISTA QUE DEVUELVE TODOS LOS REGISTROS DE UN MODELO:
@@ -204,7 +204,55 @@ tiene que quedar asi:
 STATIC_URL = 'static/'
 
 STATIC_FILES_DIRS=(os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+MEDIA_URL='/media/'
+
  
 importar os = import os
  
 en el directorio raiz crear una carpeta static
+
+## CONFIGURAR ARCHIVOS MEDIA
+
+
+crear un directorio static y en el los directorios css y img y almacenar ahi las imagenes 
+ para que se cargue el static en html hay que poner la etiqueta {%load static%}
+y en el src de la imagen va %static
+
+## 🧩 Estructura del Proyecto
+
+```bash
+gestor_estudiantes/
+├── apps/
+│   └── estudiante/
+│       ├── migrations/
+│       │   └── __init__.py
+│       ├── templates/
+│       │   └── estudiante/
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── models.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+├── gestor_estudiantes/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── media/
+├── static/
+│   ├── css/
+│   └── img/
+├── .env
+├── .env_example
+├── .gitignore
+├── manage.py
+└── README.md
+```
+Renderizar con for: 
+etiqueta {%for estudiante in estudiantes%}
+{% endfor%}

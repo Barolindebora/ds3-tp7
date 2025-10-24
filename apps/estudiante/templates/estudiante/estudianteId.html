@@ -1,0 +1,23 @@
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2>🧑‍🎓 Detalle del Estudiante</h2>
+
+    <p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ estudiante.apellido }}</p>
+    <p><strong>Edad:</strong> {{ estudiante.edad }}</p>
+    <p><strong>Nota del Curso:</strong> {{ estudiante.nota_curso }}</p>
+
+    <h3>Cursos Asociados:</h3>
+    {% if estudiante.cursos.all %}
+        <ul>
+            {% for curso in estudiante.cursos.all %}
+                <li>{{ curso.nombre }} ({{ curso.cantidad_horas }} hs)</li>
+            {% empty %}
+                <li>No está inscrito en ningún curso.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+</div>
+{% endblock %}

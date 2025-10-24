@@ -16,5 +16,5 @@ def lista_estudiantes(request):
 
 def obtener_estudiante_por_id(request, pk):
     estudiante = get_object_or_404(Estudiante, pk=pk)
-    return render(request, 'estudiante/estudiante.html', {'estudiante': estudiante})
+    return render(request, 'estudiante/estudianteId.html', {'estudiante': estudiante})
 
