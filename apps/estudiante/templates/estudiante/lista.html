@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +5,34 @@
 </head>
 <body>
     <h1>Listado de Estudiantes</h1>
+
     <ul>
         {% for estudiante in estudiantes %}
-            <li>{{ estudiante.nombre }} {{ estudiante.apellido }} - Edad: {{ estudiante.edad }}</li>
+            <li>
+                <a href="{% url 'estudiante:detalle_estudiante' estudiante.pk %}">
+                    {{ estudiante.nombre }} {{ estudiante.apellido }}
+                </a>
+                - Edad: {{ estudiante.edad }}
+                <br>
+                <strong>Cursos:</strong>
+                {% if estudiante.cursos.all %}
+                    <ul>
+                        {% for curso in estudiante.cursos.all %}
+                            <li>
+                                <a href="{% url 'estudiante:detalle_curso' curso.pk %}">
+                                    {{ curso.nombre }}
+                                </a> ({{ curso.cantidad_horas }} hs)
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    No tiene cursos asignados.
+                {% endif %}
+            </li>
         {% empty %}
             <li>No hay estudiantes registrados.</li>
         {% endfor %}
     </ul>
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2>📘 Detalle del Curso</h2>
+    <p><strong>Nombre:</strong> {{ curso.nombre }}</p>
+    <p><strong>Cantidad de horas:</strong> {{ curso.cantidad_horas }}</p>
+
+    <h3>Estudiantes inscriptos:</h3>
+    {% if estudiantes %}
+        <ul>
+            {% for estudiante in estudiantes %}
+                <li>
+                    <a href="{% url 'estudiante:detalle_estudiante' estudiante.pk %}">
+                        {{ estudiante.nombre }} {{ estudiante.apellido }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay estudiantes inscriptos en este curso.</p>
+    {% endif %}
+</div>
+{% endblock %}
