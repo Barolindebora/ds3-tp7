@@ -1,4 +1,57 @@
 
+# DISEÑO DE SOFTWARE 3 - TP 7 -2025
+
+### Barolín Debora Ines
+
+
+# RUTAS 
+    path('',vista_inicial, name='vista_inicial'), #home
+    path('estudiantes/', lista_estudiantes, name='lista_estudiantes'), # ver todos los estudiantes
+    path('estudiantes/<int:pk>/',detalle_estudiante, name='detalle_estudiante'), # ver un estudiante
+    path('estudiantes/agregar/', agregar_estudiante, name='agregar_estudiante'), # agregar un estudiante
+    path('estudiantes/curso/<int:pk>/', detalle_curso, name='detalle_curso'),  # vista del curso
+
+# ESTRUCTURA DEL PROYECTO 
+```text
+tp7/
+│
+├── envs/
+│
+├── gestor_estudiantes/
+│   ├── apps/
+│   │   └── estudiante/
+│   │       ├── migrations/
+│   │       ├── templates/
+│   │       │   └── estudiante/
+│   │       │       ├── agregar.html
+│   │       │       ├── confirmacion.html
+│   │       │       ├── detalle_curso.html
+│   │       │       ├── estudianteId.html
+│   │       │       └── lista.html
+│   │       │
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── forms.py
+│   │       ├── models.py
+│   │       ├── tests.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   │
+│   ├── gestor_estudiantes/
+│   │   ├── __init__.py
+│   │   └── (archivos del proyecto Django principal: settings.py, urls.py, etc.)
+│   │
+│   ├── media/
+│   │
+│   └── static/
+│
+├── .env
+├── .env_example
+├── .gitignore
+└── __init__.py
+```
+
 1.Crear un directorio donde se creara el entorno virtual, posicionarse en el directorio ejecutar: python -m venv nombre_del_entorno (se sugiere que tenga el mismo nombre que el proyecto)...
 
 2.A continuacion activar el entorno virtual ejecutando: nombre_del_entorno\Scripts\activate
@@ -220,39 +273,11 @@ crear un directorio static y en el los directorios css y img y almacenar ahi las
  para que se cargue el static en html hay que poner la etiqueta {%load static%}
 y en el src de la imagen va %static
 
-## 🧩 Estructura del Proyecto
 
-```bash
-gestor_estudiantes/
-├── apps/
-│   └── estudiante/
-│       ├── migrations/
-│       │   └── __init__.py
-│       ├── templates/
-│       │   └── estudiante/
-│       ├── __init__.py
-│       ├── admin.py
-│       ├── apps.py
-│       ├── models.py
-│       ├── tests.py
-│       ├── urls.py
-│       └── views.py
-├── gestor_estudiantes/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── media/
-├── static/
-│   ├── css/
-│   └── img/
-├── .env
-├── .env_example
-├── .gitignore
-├── manage.py
-└── README.md
-```
+
+
 Renderizar con for: 
 etiqueta {%for estudiante in estudiantes%}
 {% endfor%}
+
+

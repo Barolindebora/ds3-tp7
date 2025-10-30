@@ -8,9 +8,9 @@ app_name = 'estudiante'
 
 
 urlpatterns = [
-    path('',vista_inicial, name='vista_inicial'),
-    path('estudiantes/', lista_estudiantes, name='lista_estudiantes'),
-    path('estudiantes/<int:pk>/',detalle_estudiante, name='detalle_estudiante'),
-    path('estudiantes/agregar/', agregar_estudiante, name='agregar_estudiante'),
+    path('',vista_inicial, name='vista_inicial'), #home
+    path('estudiantes/', lista_estudiantes, name='lista_estudiantes'), # ver todos los estudiantes
+    path('estudiantes/<int:pk>/',detalle_estudiante, name='detalle_estudiante'), # ver un estudiante
+    path('estudiantes/agregar/', agregar_estudiante, name='agregar_estudiante'), # agregar un estudiante
     path('estudiantes/curso/<int:pk>/', detalle_curso, name='detalle_curso'),  # vista del curso
 ]
