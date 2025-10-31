@@ -278,6 +278,24 @@ y en el src de la imagen va %static
 
 Renderizar con for: 
 etiqueta {%for estudiante in estudiantes%}
-{% endfor%}
+{% endfor%} 
+
+
+# GESTION DE USUARIOS 
+
+### Crear un superUsuario
+
+python manage.py createsuperuser
+
+poner el nombre del usuario 
+
+opcional mail 
+
+password 
+
+py@
+
+en usuario 
+
 
 
